@@ -8,7 +8,7 @@ metadata:
       title: GitLab Repo
       icon: gitlab
 spec:
-  type: service
+  type: openapi
   lifecycle: production
   owner: framework
   system: framework
