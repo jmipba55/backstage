@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: WFIGuiaRapidaSpringMvcWEB
+  # This is an extra long description
+  description: Guía Rápida SpringMvc.
+  links:
+    - url: http://gitlab.sare.gipuzkoa.net/WFI/WFIGuiaRapidaSpringMvcWEB
+      title: GitLab Repo
+      icon: gitlab
+spec:
+  type: maven
+  lifecycle: production
+  owner: framework
+  consumesApis:
+    - WFIGuiaRapidaRestWEB
