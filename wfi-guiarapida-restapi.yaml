@@ -11,7 +11,7 @@ spec:
   definition: |
     openapi: "3.0.0"
     info:
-      description: Api Documentation
+      description: Api2 Documentation
       version: '1.0'
       title: Api WFIGuiaRapidaRestWEB
       contact: {}
