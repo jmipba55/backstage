@@ -19,6 +19,9 @@ spec:
         name: MIT
     servers:
       - url: http://desa.sare.gipuzkoa.net:8080
+        description: Desa server
+      - url: http://local:8080
+        description: Local server
     basePath: /WAS/HACI/WFIGuiaRapidaRestWEB
     tags:
       - name: ayuntamiento-controller
