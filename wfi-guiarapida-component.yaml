@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: WFIGuiaRapidaWEB
+  # This is an extra long description
+  description: The Petstore is an example API used to show features of the OpenAPI spec.
+  links:
+    - url: http://gitlab.sare.gipuzkoa.net/WFI/WFIGuiaRapidaSpringMvcWEB
+      title: GitLab Repo
+      icon: gitlab
+spec:
+  type: maven
+  lifecycle: production
+  owner: framework
+  providesApis:
+    - WFIGuiaRapidaRestWEB
