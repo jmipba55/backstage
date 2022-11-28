@@ -13,14 +13,12 @@ spec:
     info:
       description: Api Documentation
       version: '1.0'
-      title: Api Documentation
-      termsOfService: urn:tos
+      title: Api WFIGuiaRapidaRestWEB
       contact: {}
       license:
-        name: Apache 2.0
-        url: http://www.apache.org/licenses/LICENSE-2.0
+        name: MIT
     servers:
-      - url: http://localhost:8080
+      - url: http://desa.sare.gipuzkoa.net:8080
     basePath: /WAS/HACI/WFIGuiaRapidaRestWEB
     tags:
       - name: ayuntamiento-controller
