@@ -8,6 +8,8 @@ metadata:
     - url: http://gitlab.sare.gipuzkoa.net/WFI/WFIGuiaRapidaSpringMvcWEB
       title: GitLab Repo
       icon: gitlab
+  annotations:
+    backstage.io/techdocs-ref: url:http://gitlab.sare.gipuzkoa.net/WFI/WFIGuiaRapidaSpringMvcWEB/-/blob/develop/README.md
 spec:
   type: service
   lifecycle: production
