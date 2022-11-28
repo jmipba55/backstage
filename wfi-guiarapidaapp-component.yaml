@@ -9,7 +9,7 @@ metadata:
       title: GitLab Repo
       icon: gitlab
 spec:
-  type: angular
+  type: service
   lifecycle: production
   owner: framework
   consumesApis:
