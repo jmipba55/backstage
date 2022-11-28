@@ -1,0 +1,479 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: artist-api
+  description: Retrieve artist details
+spec:
+  type: openapi
+  lifecycle: production
+  owner: artist-relations-team
+  system: artist-engagement-portal
+  definition: |
+    openapi: "2.0"
+    info:
+      description: Api Documentation
+      version: '1.0'
+      title: Api Documentation
+      termsOfService: urn:tos
+      contact: {}
+      license:
+        name: Apache 2.0
+        url: http://www.apache.org/licenses/LICENSE-2.0
+    host: localhost:8080
+    basePath: /WAS/HACI/WFIGuiaRapidaRestWEB
+    tags:
+      - name: ayuntamiento-controller
+        description: Ayuntamiento Controller
+      - name: bidegorri-controller
+        description: Bidegorri Controller
+      - name: cuenta-controller
+        description: Cuenta Controller
+      - name: farmacia-controller
+        description: Farmacia Controller
+      - name: municipio-controller
+        description: Municipio Controller
+      - name: notification-controller
+        description: Notification Controller
+    paths:
+      /api/ayuntamientos/closest:
+        get:
+          tags:
+            - ayuntamiento-controller
+          summary: getClosest
+          operationId: getClosestUsingGET
+          produces:
+            - application/json
+          parameters:
+            - name: lat
+              in: query
+              description: lat
+              required: true
+              type: number
+              format: double
+            - name: lng
+              in: query
+              description: lng
+              required: true
+              type: number
+              format: double
+          responses:
+            '200':
+              description: OK
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/AyuntamientoDTO'
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      /api/bidegorris/inradius:
+        get:
+          tags:
+            - bidegorri-controller
+          summary: getInRadius
+          operationId: getInRadiusUsingGET
+          produces:
+            - application/json
+          parameters:
+            - name: lat
+              in: query
+              description: lat
+              required: true
+              type: number
+              format: double
+            - name: lng
+              in: query
+              description: lng
+              required: true
+              type: number
+              format: double
+            - name: radius
+              in: query
+              description: radius
+              required: true
+              type: integer
+              format: int32
+            - name: unit
+              in: query
+              description: unit
+              required: true
+              type: string
+              enum:
+                - METERS
+                - KILOMETERS
+          responses:
+            '200':
+              description: OK
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/BidegorriDTO'
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      /api/cuentas:
+        post:
+          tags:
+            - cuenta-controller
+          summary: Create a user account
+          operationId: createCuentaUsingPOST
+          consumes:
+            - application/json
+          produces:
+            - '*/*'
+          parameters:
+            - in: body
+              name: cuentaForm
+              description: cuentaForm
+              required: true
+              schema:
+                $ref: '#/definitions/CuentaForm'
+          responses:
+            '200':
+              description: OK
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      /api/cuentas/paginated:
+        get:
+          tags:
+            - cuenta-controller
+          summary: Get a paginated list of users
+          operationId: getCuentasUsingGET
+          produces:
+            - application/json
+          parameters:
+            - name: page
+              in: query
+              required: false
+              type: integer
+              format: int32
+            - name: size
+              in: query
+              required: false
+              type: integer
+              format: int32
+            - name: sort
+              in: query
+              required: false
+              type: string
+            - name: userId
+              in: query
+              description: userId
+              required: false
+              type: string
+          responses:
+            '200':
+              description: OK
+              schema:
+                $ref: '#/definitions/Page«Cuenta»'
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      /api/cuentas/{id}:
+        get:
+          tags:
+            - cuenta-controller
+          summary: Get a user by id
+          operationId: getByIdUsingGET
+          produces:
+            - application/json
+          parameters:
+            - name: id
+              in: path
+              description: id
+              required: true
+              type: string
+          responses:
+            '200':
+              description: OK
+              schema:
+                $ref: '#/definitions/Cuenta'
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+        delete:
+          tags:
+            - cuenta-controller
+          summary: Delete a user by id
+          operationId: deleteCuentasUsingDELETE
+          produces:
+            - '*/*'
+          parameters:
+            - name: id
+              in: path
+              description: id
+              required: true
+              type: string
+          responses:
+            '200':
+              description: OK
+            '204':
+              description: No Content
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+      /api/farmacias/closest:
+        get:
+          tags:
+            - farmacia-controller
+          summary: getClosest
+          operationId: getClosestUsingGET_1
+          produces:
+            - application/json
+          parameters:
+            - name: lat
+              in: query
+              description: lat
+              required: true
+              type: number
+              format: double
+            - name: lng
+              in: query
+              description: lng
+              required: true
+              type: number
+              format: double
+          responses:
+            '200':
+              description: OK
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/FarmaciaDTO'
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      /api/municipios/inradius:
+        get:
+          tags:
+            - municipio-controller
+          summary: getInRadius
+          operationId: getInRadiusUsingGET_1
+          produces:
+            - application/json
+          parameters:
+            - name: lat
+              in: query
+              description: lat
+              required: true
+              type: number
+              format: double
+            - name: lng
+              in: query
+              description: lng
+              required: true
+              type: number
+              format: double
+            - name: radius
+              in: query
+              description: radius
+              required: true
+              type: integer
+              format: int32
+            - name: unit
+              in: query
+              description: unit
+              required: true
+              type: string
+              enum:
+                - METERS
+                - KILOMETERS
+          responses:
+            '200':
+              description: OK
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/MunicipioDTO'
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+      /notification:
+        post:
+          tags:
+            - notification-controller
+          summary: getNotification
+          operationId: getNotificationUsingPOST
+          consumes:
+            - application/json
+          produces:
+            - '*/*'
+          parameters:
+            - in: body
+              name: message
+              description: message
+              required: true
+              schema:
+                $ref: '#/definitions/Message'
+            - name: topic
+              in: query
+              description: topic
+              required: true
+              type: string
+          responses:
+            '200':
+              description: OK
+            '201':
+              description: Created
+            '401':
+              description: Unauthorized
+            '403':
+              description: Forbidden
+            '404':
+              description: Not Found
+    definitions:
+      AyuntamientoDTO:
+        type: object
+        properties:
+          geoJson:
+            type: string
+          id:
+            type: string
+        title: AyuntamientoDTO
+      BidegorriDTO:
+        type: object
+        properties:
+          geoJson:
+            type: string
+          gid:
+            type: integer
+            format: int32
+          id:
+            type: string
+        title: BidegorriDTO
+      Cuenta:
+        type: object
+        properties:
+          apellido:
+            type: string
+          email:
+            type: string
+          fcreacion:
+            type: string
+            format: date-time
+          id:
+            type: string
+          idUsuario:
+            type: string
+          nombre:
+            type: string
+          password:
+            type: string
+          perfil:
+            $ref: '#/definitions/Perfil'
+          telefono:
+            type: integer
+            format: int32
+        title: Cuenta
+      CuentaForm:
+        type: object
+        properties:
+          cuenta:
+            $ref: '#/definitions/Cuenta'
+          repetirPassword:
+            type: string
+        title: CuentaForm
+      FarmaciaDTO:
+        type: object
+        properties:
+          geoJson:
+            type: string
+          id:
+            type: string
+          ogrFid:
+            type: string
+        title: FarmaciaDTO
+      Message:
+        type: object
+        properties:
+          content:
+            type: string
+          data:
+            type: object
+            additionalProperties:
+              type: string
+          subject:
+            type: string
+        title: Message
+      MunicipioDTO:
+        type: object
+        properties:
+          geoJson:
+            type: string
+          id:
+            type: string
+        title: MunicipioDTO
+      Page«Cuenta»:
+        type: object
+        properties:
+          content:
+            type: array
+            items:
+              $ref: '#/definitions/Cuenta'
+          first:
+            type: boolean
+          last:
+            type: boolean
+          number:
+            type: integer
+            format: int32
+          numberOfElements:
+            type: integer
+            format: int32
+          size:
+            type: integer
+            format: int32
+          sort:
+            $ref: '#/definitions/Sort'
+          totalElements:
+            type: integer
+            format: int64
+          totalPages:
+            type: integer
+            format: int32
+        title: Page«Cuenta»
+      Perfil:
+        type: object
+        properties:
+          cuenta:
+            $ref: '#/definitions/Cuenta'
+          idPerfil:
+            type: integer
+            format: int32
+          idioma:
+            type: string
+            enum:
+              - CASTELLANO
+              - EUSKERA
+              - INGLES
+              - ALEMAN
+              - FRANCES
+        title: Perfil
+      Sort:
+        type: object
+        title: Sort
