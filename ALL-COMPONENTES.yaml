@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: guiarapida-components
+  description: Componentes de la Guía Rápida
+spec:
+  targets:
+    - ./WFIGuiaRapidaAPP.yaml
+    - ./WFIGuiaRapidaRestAPI.yaml
+    - ./WFIGuiaRapidaSpringMvcWEB.yaml
