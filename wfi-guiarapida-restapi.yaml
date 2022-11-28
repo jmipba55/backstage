@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: WFIGuiaRapidaRestWEB
-  description: API para las aplicaciones móviles 2
+  description: API para las aplicaciones móviles 2.1
 spec:
   type: openapi
   lifecycle: production
@@ -11,7 +11,7 @@ spec:
   definition: |
     openapi: "3.0.0"
     info:
-      description: Api2 Documentation
+      description: Api Documentation
       version: '1.0'
       title: Api WFIGuiaRapidaRestWEB
       contact: {}
