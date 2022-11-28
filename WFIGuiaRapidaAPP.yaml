@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: WFIGuiaRapidaAPP
   # This is an extra long description
-  description: The Petstore is an example API used to show features of the OpenAPI spec.
+  description: Aplicación angular para móviles.
   links:
     - url: http://gitlab.sare.gipuzkoa.net/WFI/WFIGuiaRapidaAPP
       title: GitLab Repo
