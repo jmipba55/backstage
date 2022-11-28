@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: WFIGuiaRapidaAPP
   # This is an extra long description
-  description: Aplicación angular para móviles.
+  description: Aplicación angular para móviles
   links:
     - url: http://gitlab.sare.gipuzkoa.net/WFI/WFIGuiaRapidaAPP
       title: GitLab Repo
